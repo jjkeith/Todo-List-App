@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Booksterizer</title>
+
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.css" media="screen" title="no title" charset="utf-8">
+      <link href='https://fonts.googleapis.com/css?family=Righteous' rel='stylesheet' type='text/css'>
+
+      <script type="text/javascript" src="angular.js"></script>
+      <script type="text/javascript" src="app.js"></script>
+      <!-- <script type="text/javascript" src="mainCtrl.js"></script> -->
+
+      <style media="screen">
+        body {
+          font-family: 'Righteous', cursive;
+          color: lightgrey;
+        }
+        .center {
+          margin: 0 auto;
+        }
+        .padding {
+          height: 50px;
+        }
+        ul
+        {
+          list-style-type: none;
+        }
+
+      </style>
+
+  </head>
+<body ng-app="booksApp"
+      class="center lighten-5 text-darken-4 {{newColor + '-text'}}"
+      ng-class="newColor">
+    <h1 class="accent-1">Booksterizer</h1>
+  <div class="" ng-controller="BooksController as bc">
+    <div class="row">
+      <div class="col s4 offset-s4">
+        <input type="text"
+        class="input-field center lighten-5"
+        ng-class="newColor"
+        ng-model="bc.newBook"
+        placeholder="new book">
+      </div>
+    </div>
+    <div class="row center">
+      <button type="button"
+      ng-class="newColor"
+      class="lighten-3 btn-sm text-darken-4 {{newColor + '-text'}}"
+      ng-click="bc.addBook(bc.newBook)">Add Book</button>
+    </div>
+      <ul class="collection lighten-3"      ng-class="newColor">
+        <li class="collection-item"
+          ng-repeat="book in bc.booksList | orderBy:'' track by $index">
+          <div class="row">
+            <div class="col s4 offset-s3">
+              <input type="text"
+              class="input-field lighten-5"
+              ng-class="newColor"
+              ng-model="book"
+              placeholder="{{ book }}"
+              style="outline:none; border:0; color:darken-4 ">
+
+            </div>
+            <div class="col s1">
+              <button type="button"
+                    ng-class="newColor"
+                    class="lighten-3 btn-sm text-darken-4 {{newColor + '-text'}}"
+                    ng-click="bc.updateBook(book, $index)">edit</button>
+            </div>
+            <div class="col s1">
+              <button type="button"
+                    ng-class="newColor"
+                    class="lighten-3 btn-sm text-darken-4 {{newColor + '-text'}}"
+                    ng-click="bc.destroyBook(book)">delete  </button>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="row">
+      <div class="padding">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s6 offset-s3">
+              <input type="text"
+              name="New Color"
+              ng-model="newColor"
+              ng-class="newColor"
+              class="center lighten-5 input-field"
+              placeholder="change color">
+      </div>
+    </div>
+    </div>
+
+
+
+  </body>
+</html>

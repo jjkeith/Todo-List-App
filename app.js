@@ -1,16 +1,16 @@
-angular.module('booksApp', []); // sets the booksApp module
+angular.module('todoApp', []); // sets the todoApp module
 
 // angular
-//   .module('booksApp')
+//   .module('todoApp')
 //   .value('secretOfLife', 42)
 
-angular.module('booksApp') // gets the booksApp module
-  .controller('BooksController', BooksControllerFunc);// add controller to the module
+angular.module('todoApp') // gets the todoApp module
+  .controller('TaskController', TaskControllerFunc);// add controller to the module
 
-BooksControllerFunc.$inject = ['$http']
+TaskControllerFunc.$inject = ['$http']
 
-function BooksControllerFunc($http) {
-  console.log('Instantiated BooksController');
+function TaskControllerFunc($http) {
+  console.log('Instantiated TaskController');
   // console.log('The secret of life is ', secretOfLife);
   $http
     .get('https://www.reddit.com/r/programming.json')
@@ -18,17 +18,17 @@ function BooksControllerFunc($http) {
 
 
 
-  this.booksList = ['Anne of Green Gables', "Ender's Game", 'Song of Fire and Ice', 'Feast for Crows', 'HTML for Dummies', "Hitchhiker's Guide to the Galaxy", "So Long and Thanks for All the Fish" ]
-  this.addBook = function(bookName) {
-    this.booksList.push(bookName)
-    this.newBook = ''
+  this.todoList = ['Anne of Green Gables', "Ender's Game", 'Song of Fire and Ice', 'Feast for Crows', 'HTML for Dummies', "Hitchhiker's Guide to the Galaxy", "So Long and Thanks for All the Fish" ]
+  this.addTask = function(taskName) {
+    this.todoList.push(taskName)
+    this.newTask = ''
   }
-  this.updateBook = function(book, index){
-    this.booksList.splice(index, 1, book)
+  this.updateTask = function(task, index){
+    this.todoList.splice(index, 1, task)
   }
-  this.destroyBook = function(book)  {
-    var index = this.booksList.indexOf(book)
-    this.booksList.splice(index, 1)
+  this.destroyTask = function(task)  {
+    var index = this.todoList.indexOf(task)
+    this.todoList.splice(index, 1)
   }
 
 

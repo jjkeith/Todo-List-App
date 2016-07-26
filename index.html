@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Booksterizer</title>
+    <title>To Do</title>
 
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.css" media="screen" title="no title" charset="utf-8">
       <link href='https://fonts.googleapis.com/css?family=Righteous' rel='stylesheet' type='text/css'>
@@ -30,36 +30,36 @@
       </style>
 
   </head>
-<body ng-app="booksApp"
+<body ng-app="todoApp"
       class="center lighten-5 text-darken-4 {{newColor + '-text'}}"
       ng-class="newColor">
-    <h1 class="accent-1">Booksterizer</h1>
-  <div class="" ng-controller="BooksController as bc">
+    <h1 class="accent-1">Tasksterizer</h1>
+  <div class="" ng-controller="TaskController as bc">
     <div class="row">
       <div class="col s4 offset-s4">
         <input type="text"
         class="input-field center lighten-5"
         ng-class="newColor"
-        ng-model="bc.newBook"
-        placeholder="new book">
+        ng-model="bc.newTask"
+        placeholder="new task">
       </div>
     </div>
     <div class="row center">
       <button type="button"
       ng-class="newColor"
       class="lighten-3 btn-sm text-darken-4 {{newColor + '-text'}}"
-      ng-click="bc.addBook(bc.newBook)">Add Book</button>
+      ng-click="bc.addTask(bc.newTask)">Add Task</button>
     </div>
       <ul class="collection lighten-3"      ng-class="newColor">
         <li class="collection-item"
-          ng-repeat="book in bc.booksList | orderBy:'' track by $index">
+          ng-repeat="task in bc.todoList | orderBy:'' track by $index">
           <div class="row">
             <div class="col s4 offset-s3">
               <input type="text"
               class="input-field lighten-5"
               ng-class="newColor"
-              ng-model="book"
-              placeholder="{{ book }}"
+              ng-model="task"
+              placeholder="{{ task }}"
               style="outline:none; border:0; color:darken-4 ">
 
             </div>
@@ -67,13 +67,13 @@
               <button type="button"
                     ng-class="newColor"
                     class="lighten-3 btn-sm text-darken-4 {{newColor + '-text'}}"
-                    ng-click="bc.updateBook(book, $index)">edit</button>
+                    ng-click="bc.updateTask(task, $index)">edit</button>
             </div>
             <div class="col s1">
               <button type="button"
                     ng-class="newColor"
                     class="lighten-3 btn-sm text-darken-4 {{newColor + '-text'}}"
-                    ng-click="bc.destroyBook(book)">delete  </button>
+                    ng-click="bc.destroyTask(task)">delete  </button>
             </div>
           </div>
         </li>
